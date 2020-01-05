@@ -12,11 +12,11 @@ CC=1/P*integral(f,0,P);
 Ck=zeros(1,N);
 Ak=zeros(1,N);
 x_modificat=0;
-for (k=1:N)
-   f=@(t)square(w0*t,duty)*exp(-w0*t*1j(k-25));
+for (k=1:1:N)
+   f=@(t)square(w0*t,duty).exp(-w0*t*1j(k-25));
    Ck(k)=1/P*integral(f,0,P);             %coeficientii SFC
    Ak(k+1)=2*abs(Ck(k));
-   x_modificat=x_modificat+Ck(k)*exp(-w0*t*1j(k-25));
+   x_modificat=x_modificat+Ck(k)exp(w0*t*1j(k-25));
 end
 figure(1);
 plot(t,x_modificat,t,x_dr);
